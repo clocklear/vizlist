@@ -1,0 +1,10 @@
+.taskBucket {
+	&:hover {
+		.newTaskItem {
+			opacity: 1;
+		}
+	}
+	.newTaskItem {
+		opacity: 0;
+	}
+}

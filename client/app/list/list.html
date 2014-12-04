@@ -1,0 +1,36 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container-fluid">
+	<h2 class="page-header">{{list.listTitle}}</h2>
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table listTable">
+				<thead>
+					<tr>
+						<th>{{list.subjectTitle}}</th>
+						<th ng-repeat="status in list.statuses" ng-if="list.statuses.length">
+							{{status.statusName}}
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="subject in list.subjects" ng-if="list.subjects.length">
+						<td>{{subject.subjectName}}</td>
+						<td ng-repeat="status in list.statuses" ng-if="list.statuses.length" class="taskBucket">
+							<!-- Iterate and paint any existing task items -->
+							<div ng-repeat="item in getContents(subject, status) as items" ng-if="items.length" class="taskItem">
+								{{taskItem.title}}
+							</div>
+							<!-- New task item -->
+							<div class="newTaskItem pull-right">
+								<button class="btn btn-link" ng-click="openModal()"><i class="fa fa-plus-circle"></i>Add</button>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<div ng-include="'components/footer/footer.html'"></div>

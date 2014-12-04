@@ -1,0 +1,59 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container-fluid">
+	<h2 class="page-header">Create a new list <small>Define your list structure below</small></h2>
+	<div class="row">
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 vizlistInput">
+			<input type="text" name="listName" class="listTitle form-control" placeholder="My Awesome List" ng-model="listTemplate.listTitle">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table listTable">
+				<thead>
+					<tr>
+						<th class="vizlistInput">
+							<input class="form-control" placeholder="Subject Title" ng-model="listTemplate.subjectTitle">
+						</th>
+						<th class="vizlistInput animate-repeat" ng-repeat="status in listTemplate.statuses" ng-if="listTemplate.statuses.length">
+							<div class="input-group">
+								<input class="form-control" placeholder="Status" ng-model="status.statusName">
+								<span class="input-group-btn">
+									<button class="btn btn-link" type="button" ng-click="removeStatus(status)"><i class="remove fa fa-minus-circle"></i></button>
+								</span>
+							</div>	
+						</th>
+						<th class="newStatus">
+							<button class="btn btn-default" ng-click="addStatus()">Add Status</button>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="vizlistInput animate-repeat" ng-repeat="subject in listTemplate.subjects" ng-if="listTemplate.subjects.length">
+						<td>
+							<div class="input-group">
+								<input class="form-control" placeholder="Subject" ng-model="subject.subjectName">
+								<span class="input-group-btn">
+									<button class="btn btn-link" type="button" ng-click="removeSubject(subject)" tooltip="Remove"><i class="remove fa fa-minus-circle"></i></button>
+								</span>
+							</div>	
+						</td>
+					</tr>
+					<tr class="newSubject">
+						<td>
+							<button class="btn btn-default" ng-click="addSubject()">Add Subject</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3">
+			<button class="btn btn-primary btn-lg" ng-click="createList()">Create My List</button>
+		</div>
+	</div>
+</div>
+
+
+<div ng-include="'components/footer/footer.html'"></div>
