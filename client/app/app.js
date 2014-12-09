@@ -6,11 +6,18 @@ angular.module('vizlistApp', [
   'ngSanitize',
   'ngAnimate',
   'ui.router',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'monospaced.elastic',
+  'ngDraggable'
 ])
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
-    $urlRouterProvider
-      .otherwise('/');
+.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+  $urlRouterProvider
+    .otherwise('/');
 
-    $locationProvider.html5Mode(true);
-  });
+  $locationProvider.html5Mode(true);
+});
+
+// Anything below is non angular.  And likely sucks.  But is necessary.
+$(document).ready(function () {
+  $('textarea').autosize();
+});

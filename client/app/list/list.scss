@@ -6,5 +6,7 @@
 	}
 	.newTaskItem {
 		opacity: 0;
+		display: inline-block;
+		transition: opacity 0.2s linear;
 	}
 }

@@ -22,12 +22,14 @@ $danger: #d9534f;
 // injector
 @import 'createlist/createlist.scss';
 @import 'list/list.scss';
+@import 'listItem/listItem.scss';
 @import 'main/main.scss';
+@import 'stylePicker/stylePicker.scss';
 @import 'modal/modal.scss';
 // endinjector
 
 .vizlistInput {
-    input {
+    textarea, input {
         border: none;
         border-color: transparent;
         box-shadow: none;
@@ -65,4 +67,10 @@ $danger: #d9534f;
 .animate-repeat.ng-move.ng-move-active,
 .animate-repeat.ng-enter.ng-enter-active {
   opacity:1;
+}
+
+.color-default {
+	background-color: #e6e6e6;
+	border-color: #adadad;
+	color: #000;
 }

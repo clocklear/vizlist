@@ -4,6 +4,7 @@ angular.module('vizlistApp')
   .service('ListsSvc', function ($http) {
 
     function all (callback) {
+      callback = callback || angular.noop;
       $http.get('/api/lists')
         .success(function (lists) {
           callback(lists);
@@ -11,6 +12,7 @@ angular.module('vizlistApp')
     }
 
     function get (id, callback) {
+      callback = callback || angular.noop;
       $http.get('/api/lists/' + id)
         .success(function (list) {
           callback(list);
@@ -18,6 +20,7 @@ angular.module('vizlistApp')
     }
 
     function create (list, callback) {
+      callback = callback || angular.noop;
       $http.post('/api/lists', list)
         .success(function (res) {
           callback(res);
@@ -25,6 +28,7 @@ angular.module('vizlistApp')
     }
 
     function update (listId, list, callback) {
+      callback = callback || angular.noop;
       $http.put('/api/lists/' + listId, list)
         .success(function (res) {
           callback(res);
@@ -32,6 +36,7 @@ angular.module('vizlistApp')
     }
 
     function remove (listId, callback) {
+      callback = callback || angular.noop;
       $http.delete('/api/lists/' + listId)
         .success(function (res) {
           callback(res);

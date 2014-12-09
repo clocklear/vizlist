@@ -2,6 +2,7 @@
 
 angular.module('vizlistApp')
   .factory('Modal', function ($rootScope, $modal) {
+
     /**
      * Opens a modal
      * @param  {Object} scope      - an object to be merged with modal's scope
@@ -24,6 +25,57 @@ angular.module('vizlistApp')
 
     // Public API here
     return {
+
+      /* Form modals */
+      form: {
+
+        /**
+         * Create a function to open a form modal
+         * (ex. ng-click='myModalFn(name, template, arg1, arg2...)')
+         * @param  {Function} callback  - callback, ran when form is confirmed
+         * @param  {String}   template  - the html template to display in the modal
+         * @return {Function}           - the function to open the modal (ex. myModalFn)
+         */
+        create: function (callback, template) {
+          callback = callback || angular.noop;
+
+          /**
+           * Open a form modal
+           * @param {String} name      - name or info to show on modal
+           * @param {All}              - any additional args are passed straight to the callback
+           */
+          return function () {
+            var args = Array.prototype.slice.call(arguments);
+            var name = args.shift();
+            var obj = args.shift();
+            var formModal = openModal({
+              modal: {
+                dismissable: true,
+                title: 'Create a new ' + name,
+                templateUrl: template,
+                buttons: [{
+                  classes: 'btn-primary',
+                  text: 'Create',
+                  click: function (e) {
+                    formModal.close(e);
+                  }
+                }, {
+                  classes: 'btn-default',
+                  text: 'Cancel',
+                  click: function (e) {
+                    formModal.dismiss(e);
+                  }
+                }]
+              }
+            }, 'modal-info');
+
+            formModal.result.then(function (event) {
+              callback.apply(event, args);
+            });
+          };
+        }
+
+      },
 
       /* Confirmation modals */
       confirm: {

@@ -18,7 +18,11 @@
     "method-override": "~1.0.0",
     "morgan": "~1.0.0",
     "node-uuid": "^1.4.2",
-    "serve-favicon": "~2.0.1"
+    "primus": "^2.4.12",
+    "primus-emitter": "^3.0.3",
+    "serve-favicon": "~2.0.1",
+    "sockjs": "^0.3.11",
+    "sockjs-client-node": "^0.1.1"
   },
   "devDependencies": {
     "grunt": "~0.4.4",

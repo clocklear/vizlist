@@ -1,0 +1,56 @@
+.listItem {
+	border: solid 1px grey;
+	padding: 5px;
+	min-width: 200px;
+	display: inline-block;
+	margin: 3px 3px 0 0;
+	position: relative;
+
+	textarea {
+		resize: none;
+		background: transparent;
+		color: white;
+		outline: none;
+		overflow: auto;
+	}
+
+	&:hover {
+		.stylePicker, .removeItem, .dragger {
+			opacity: 1;
+		}
+	}
+	.stylePicker, .removeItem, .dragger {
+		opacity: 0;
+		position: absolute;
+		transition-property: opacity;
+  		transition-duration: 0.2s;
+  		transition-timing-function: linear;
+	}
+
+	.stylePicker {
+		left: 10px;
+		bottom: 4px;
+		float: left;
+	}
+
+	.removeItem {
+		display: inline-block;
+		right: 0;
+		bottom: 0;
+		float: right;
+		padding: 5px 9px;
+		color: #fff;
+	}
+
+	.dragger {
+		right: 0;
+		top: 0;
+		padding: 5px 9px;
+		cursor: pointer;
+	}
+
+	.animatedHeight {
+		transition: height 0.2s;
+	}
+
+}

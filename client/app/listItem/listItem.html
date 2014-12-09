@@ -1,0 +1,12 @@
+<div class="listItem {{item.class}}" ng-drag="true" ng-drag-data="item">
+	<div class="itemBody vizlistInput">
+		<textarea class="form-control msd-elastic: \n animatedHeight" ng-model="item.listItemDesc"></textarea>
+	</div>
+	<div class="dragger drag-handle" ng-drag-handle>
+		<i class="fa fa-bars"></i>
+	</div>
+	<style-picker item='item' styles='styles' on-change='onChange'></style-picker>
+	<button class="btn btn-link removeItem" ng-click="onDelete(item.listItemDesc, item)">
+		<i class="fa fa-remove"></i>
+	</button>
+</div>

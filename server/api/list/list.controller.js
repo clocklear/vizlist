@@ -4,7 +4,8 @@ var _ = require('lodash');
 var flatfile = require('flat-file-db');
 var db = flatfile('/tmp/vizlist.db');
 var uuid = require('node-uuid');
-var debug = require('debug')('list.controller');
+var debug = require('debug')('vizlist.list.controller');
+var socketManager = require('../../components/socket-manager');
 
 // Get list of lists
 function index (req, res) {
@@ -42,7 +43,12 @@ function create (req, res) {
 }
 
 function update (req, res) {
-  res.json({});
+  var list = req.body;
+  replaceList(req.params.id, list);
+  res.json(list.listId);
+  // broadcast list update
+  debug('broadcasting list update', req.params.id);
+  socketManager.broadcast(req.params.id, 'list.broadcast', list);
 }
 
 function destroy (req, res) {

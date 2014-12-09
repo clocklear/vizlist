@@ -1,0 +1,12 @@
+.stylePicker {
+	margin-top: 8px;
+	display: inline-block;
+	.style {
+		min-width: 10px;
+		min-height: 10px;
+		border: solid 1px;
+		margin: 2px;
+		display: inline-block;
+		cursor: pointer;
+	}
+}

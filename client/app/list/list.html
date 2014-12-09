@@ -16,14 +16,12 @@
 				<tbody>
 					<tr ng-repeat="subject in list.subjects" ng-if="list.subjects.length">
 						<td>{{subject.subjectName}}</td>
-						<td ng-repeat="status in list.statuses" ng-if="list.statuses.length" class="taskBucket">
+						<td ng-repeat="status in list.statuses" ng-if="list.statuses.length" class="taskBucket" ng-drop="{subject: subject, status: status}" ng-drop-success="onDropComplete($data, $event, $target)">
 							<!-- Iterate and paint any existing task items -->
-							<div ng-repeat="item in getContents(subject, status) as items" ng-if="items.length" class="taskItem">
-								{{taskItem.title}}
-							</div>
+							<list-item ng-repeat="item in getContents(subject, status) as items" ng-if="items.length" item="item" styles="availableStyles" on-change="saveChanges" on-delete='deleteItem'></list-item>
 							<!-- New task item -->
-							<div class="newTaskItem pull-right">
-								<button class="btn btn-link" ng-click="openModal()"><i class="fa fa-plus-circle"></i>Add</button>
+							<div class="newTaskItem">
+								<button class="btn btn-link" ng-click="createListItem(subject, status)"><i class="fa fa-plus-circle"></i>Add</button>
 							</div>
 						</td>
 					</tr>

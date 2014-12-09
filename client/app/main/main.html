@@ -12,7 +12,7 @@
   <div class="row">
     <div class="col-lg-12">
       <h1 class="page-header">Recent Lists</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="list in lists">
+      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6 noborder" ng-repeat="list in lists">
         <li ng-if="list.listTitle && list.listId"><a ui-sref="list({id: list.listId})">{{list.listTitle}}</a></li>
       </ul>
     </div>
